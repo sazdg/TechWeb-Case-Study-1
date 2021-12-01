@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PHP GOY CIME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="case study GOY quiz the office" />
+    <meta name="author" content="saz" />
+    <link rel="stylesheet" href="css/stile.css">
+    <!--css funziona senza relative path
+    usare ctrl + F5 nel caso non aggiornasse la risorsa css,
+    questo farà reload e refresh -->
+    <!--JQ CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#colore").on("change", function() {
+                var c = $("#colore").val();
+                //http request si confonde con il codice # del colore esadecimale
+                var col = c.replace("#","%23");
+
+                //si fa una chiamata ajax che fa partire una chiamata XMLHTTPRequest, che sarebbe una HTTPRequest tutta sua asincrona
+                $.ajax({
+                    url:"sfondo.php",
+                    type:"GET",
+                    data: "c="+col
+                })//se funziona
+                .done(function(response){
+                    $("html").css("background-color", c);
+                    $("#prova").html(response);
+                    console.log(c);
+                })//se non funziona
+                .fail(function(xhr, resp, text){
+                    console.log(xhr, resp, text);
+                    $("#prova").html(xhr+resp+text);
+                });
+                
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+
+        <h2>LOGIN PAGE</h2>
+        <p>Pagina per accedere al quiz del corso</p>
+    </div>
+    <div>
+        <form action="login.php" method="POST">
+            <!--elemento riempito dalla chiamata ajax-->
+            <span id="prova"></span>
+
+            <span>che sfondo vuoi?
+                <input type="color" id="colore" name="colore" required>
+            </span><br/><br/>
+            
+            
+            <input type="text" name="user" required><br/><br/>
+            <input type="password" name="pass" required> <br/><br/>
+            <input type="Submit" value="invia">
+        </form>
+    </div>
+
+
+</body>
+
+</html>
