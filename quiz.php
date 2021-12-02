@@ -114,7 +114,7 @@
                             name="amici[]"
                             value=<?= $risposte_array[$k]->getRisp(); ?>>
                             <?= $risposte_array[$k]->getRisp(); ?>
-                            <a href="xxx.html" id=<?= $risposte_array[$k]->getIdA(); ?>>
+                            <a href="#" id=<?= $risposte_array[$k]->getIdA(); ?>>
                             mostra foto</a>
 
                             <br/>
