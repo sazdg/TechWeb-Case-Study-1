@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>PHP GOY CIME</title>
+    <title>PHP case study 1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="case study GOY quiz the office" />
